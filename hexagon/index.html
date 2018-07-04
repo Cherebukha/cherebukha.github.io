@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hexagon Visualizer</title>
+	<link rel="stylesheet" href="style/style.css">
+	<script src="js/script.js"></script>
+</head>
+<body onload="initPage()">
+	<div id="settings">
+		<label for="abRepeat" class="checkboxContainer">A-B Repeat
+			<input type="checkbox" id="abRepeat" onclick="toggleCheckboxStyle()">
+			<span class="checkmark"></span>
+		</label><br>
+		<input type="text" id="aInput" value="0">
+		<input type="text" id="bInput" value="60"><br>
+		<button id="aSet" onclick="setA()">Set A</button>
+		<button id="bSet" onclick="setB()">Set B</button>
+		<!--<button id="setInput" onclick="setPoint()">Set Points</button>-->
+	</div>
+	<input type="text" id="debugInput" disabled> <!-- For debug purposes -->
+	<div id="progressBar">
+		<div id="fill"></div>
+		<!--<div id="handle"></div>-->
+	</div>
+	<div id="player" onclick="playAudio()" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+		<p id="playerMessage" class="flashing">Drop here</p>
+	</div>
+	<audio id="audio" controls></audio>
+	<canvas id="myCanvas"></canvas>
+</body>
+</html>
