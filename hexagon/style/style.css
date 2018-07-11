@@ -143,6 +143,7 @@ body {
 	border-width: 5px 7px 8px;
 	border-style: solid;
 	user-select: none;
+	cursor: pointer;
 }
 #player:hover {
 	opacity: 1;
@@ -162,7 +163,7 @@ body {
 	-o-transform: translateY(-65%) perspective(100px) rotateX(12deg);
 	text-transform: uppercase;
 	font-size: 24px;
-	cursor: default;
+	cursor: pointer;
 }
 .flashing {
 	animation: flash 2s ease infinite;
