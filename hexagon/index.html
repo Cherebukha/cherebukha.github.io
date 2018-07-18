@@ -10,13 +10,17 @@
 <body onload="initPage()">
 	<div id="settings">
 		<label for="abRepeat" class="checkboxContainer">A-B Repeat
-			<input type="checkbox" id="abRepeat" onclick="toggleCheckboxStyle()">
+			<input type="checkbox" id="abRepeat" onclick="toggleCheckboxStyle(abRepeat, 0)">
 			<span class="checkmark"></span>
 		</label><br>
 		<input type="text" id="aInput" value="0">
 		<input type="text" id="bInput" value="60"><br>
 		<button id="aSet" onclick="setA()">Set A</button>
-		<button id="bSet" onclick="setB()">Set B</button>
+		<button id="bSet" onclick="setB()">Set B</button><br><br>
+		<label for="bass" class="checkboxContainer">Bass
+			<input type="checkbox" id="bass" onclick="toggleCheckboxStyle(bass, 1);toggleBass()">
+			<span class="checkmark"></span>
+		</label>
 		<!--<button id="setInput" onclick="setPoint()">Set Points</button>-->
 	</div>
 	<input type="text" id="debugInput" disabled> <!-- For debug purposes -->

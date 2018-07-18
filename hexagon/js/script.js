@@ -1,5 +1,5 @@
-var canvas, context, centerX, centerY, intensity = 0, diff, size, oldSize, degree = 0, modDegree = 1.5;
-var file, audio, files = 0, audioCtx, src, analyser, bufferLength, dataArray;
+var canvas, context, centerX, centerY, intensity = 0, intensityMod = 0.0005, diff, size, oldSize, degree = 0, modDegree = 1.5;
+var file, audio, files = 0, audioCtx, src, analyser, bufferLength, bar, dataArray;
 var priHue = 215, secHue = 315, floatHue = priHue + 10, modHue = 1, color = new Array, lightness = [15, 5], tempLightness;
 var a, b;
 
@@ -18,6 +18,7 @@ function initPage() {
 	progressBar = document.getElementById('progressBar');
 	handle = document.getElementById('handle');
 	fillBar = document.getElementById('fill');
+	bass = document.getElementById('bass');
 
 	context = canvas.getContext("2d");
 	// canvas.addEventListener('contextmenu', event => event.preventDefault()); // Prevent context menu from appearing at clicking the RMB on canvas
@@ -31,6 +32,7 @@ function initPage() {
 	analyser.fftSize = 2048;
 	analyser.smoothingTimeConstant = 0.3; // God blessed property
 	bufferLength = analyser.frequencyBinCount;
+	bar = bufferLength;
 	dataArray = new Uint8Array(bufferLength);
 	drawHex();
 	audio.addEventListener('ended', function() {
@@ -102,6 +104,8 @@ function modifyColor() {
 	settings.style.color = color[2];
 	checkmark[0].style.border = '1px solid '+color[2];
 	checkmark[0].style.backgroundColor = color[4];
+	checkmark[1].style.border = '1px solid '+color[2];
+	checkmark[1].style.backgroundColor = color[4];
 	aInput.style.border = '1px solid '+color[2];
 	aInput.style.backgroundColor = color[4];
 	aInput.style.color = color[2];
@@ -113,9 +117,9 @@ function modifyColor() {
 	fillBar.style.backgroundColor = color[2];
 }
 
-function toggleCheckboxStyle() {
-	if (abRepeat.checked == true) checkmark[0].innerHTML = '+';
-	else checkmark[0].innerHTML = '';
+function toggleCheckboxStyle(checkbox, n) {
+	if (checkbox.checked == true) checkmark[n].innerHTML = '+';
+	else checkmark[n].innerHTML = '';
 }
 
 function repeatAudio() {
@@ -143,6 +147,21 @@ function setB() {
 	bInput.value = b;
 }
 
+function toggleBass() {
+	if(bass.checked == true){
+		bar = 20;
+		intensityMod = 0.025;
+		analyser.minDecibels = -50;
+		analyser.maxDecibels = -20;
+		analyser.smoothingTimeConstant = 0.6;
+	} else {
+		bar = bufferLength;
+		intensityMod = 0.0005;
+		analyser.minDecibels = -100;
+		analyser.maxDecibels = -30;
+		analyser.smoothingTimeConstant = 0.3;
+	}
+}
 function drawHex() {
 	window.onresize = resizeCanvas();
 	degree += modDegree;
@@ -151,12 +170,12 @@ function drawHex() {
 	requestAnimationFrame(drawTri);
 	if (file !== 0) analyser.getByteFrequencyData(dataArray); // Otherwise function returns an error
 	// Pulse power (hexagon size) calculation -----------
-	for (var i = 0; i < bufferLength; i++) {
+	for (var i = 0; i < bar; i++) {
 		intensity += Math.min(99999, Math.max((dataArray[i] * 2.5 - 200), 0));
 	}
 	repeatAudio();
 	oldSize = size;
-	size = 100 + (intensity * 0.0005);
+	size = 100 + (intensity * intensityMod);
 	diff = size - oldSize;
 	debugInput.value = intensity.toFixed(0); // For debug purposes
 	intensity = 0;
