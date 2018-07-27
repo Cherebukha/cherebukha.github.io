@@ -19,6 +19,7 @@ function initPage() {
 	handle = document.getElementById('handle');
 	fillBar = document.getElementById('fill');
 	bass = document.getElementById('bass');
+	time = document.getElementById('time');
 
 	context = canvas.getContext("2d");
 	// canvas.addEventListener('contextmenu', event => event.preventDefault()); // Prevent context menu from appearing at clicking the RMB on canvas
@@ -42,6 +43,8 @@ function initPage() {
 	audio.addEventListener('timeupdate', function() {
 		var position = audio.currentTime / audio.duration;
 		fillBar.style.width = position * 100 + '%';
+		document.getElementById('currentTime').innerHTML = convertTime(audio.currentTime);
+		document.getElementById('totalTime').innerHTML = convertTime(audio.duration);
 	});
 }
 
@@ -115,6 +118,7 @@ function modifyColor() {
 	progressBar.style.backgroundColor = color[3];
 	/*handle.style.backgroundColor = color[2];*/
 	fillBar.style.backgroundColor = color[2];
+	time.style.color = color[2];
 }
 
 function toggleCheckboxStyle(checkbox, n) {
