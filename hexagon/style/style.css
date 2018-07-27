@@ -101,6 +101,18 @@ body {
 	height: 10px;
 	text-align: right;
 }
+#time {
+	display: flex;
+	justify-content: space-between;
+	position: fixed;
+	bottom: 120px;
+	left: 50%;
+	z-index: 100;
+	width: 400px;
+	height: 20px;
+	margin-left: -200px;
+	opacity: 0.6;
+}
 #progressBar {
 	position: fixed;
 	bottom: 110px;
