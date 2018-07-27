@@ -166,6 +166,13 @@ function toggleBass() {
 		analyser.smoothingTimeConstant = 0.3;
 	}
 }
+
+function convertTime(inputSeconds) {
+	var seconds = Math.floor(inputSeconds % 60);
+	if (seconds < 10) seconds = '0' + seconds;
+	var minutes = Math.floor(inputSeconds / 60);
+	return minutes + ':' + seconds;
+}
 function drawHex() {
 	window.onresize = resizeCanvas();
 	degree += modDegree;
