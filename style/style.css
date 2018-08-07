@@ -8,6 +8,8 @@ body {
 }
 img {
 	border-radius: 50%;
+	width: 200px;
+	height: 200px;
 	animation: 1s ease 0s 1 appear;
 }
 .gradient {
