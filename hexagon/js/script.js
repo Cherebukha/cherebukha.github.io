@@ -1,4 +1,4 @@
-var canvas, context, centerX, centerY, intensity = 0, intensityMod = 0.0005, diff, size, oldSize, degree = 0, modDegree = 1.5;
+var canvas, context, centerX, centerY, intensity = 0, intensityMod = 0.0005, diff, size, oldSize, degree = 0, modDegree = 1, rotDirection = 1;
 var file, audio, files = 0, audioCtx, src, analyser, bufferLength, bar, dataArray;
 var priHue = 215, secHue = 315, floatHue = priHue + 10, modHue = 1, color = new Array, lightness = [15, 5], tempLightness;
 var a, b;
@@ -43,8 +43,10 @@ function initPage() {
 	audio.addEventListener('timeupdate', function() {
 		var position = audio.currentTime / audio.duration;
 		fillBar.style.width = position * 100 + '%';
-		document.getElementById('currentTime').innerHTML = convertTime(audio.currentTime);
-		document.getElementById('totalTime').innerHTML = convertTime(audio.duration);
+		if (convertTime(audio.duration) !== 'NaN:NaN') {
+			document.getElementById('currentTime').innerHTML = convertTime(audio.currentTime);
+			document.getElementById('totalTime').innerHTML = convertTime(audio.duration);
+		}
 	});
 }
 
@@ -59,6 +61,7 @@ function dropHandler(ev) {
 		}
 	}
 	audio.src = URL.createObjectURL(file);
+	audio.currentTime = 0;
 	playAudio();
 	removeDragData(ev);
 }
@@ -173,9 +176,17 @@ function convertTime(inputSeconds) {
 	var minutes = Math.floor(inputSeconds / 60);
 	return minutes + ':' + seconds;
 }
+
+function seekForward() {
+	audio.currentTime += 5;
+}
+
+function seekBackward() {
+	audio.currentTime -= 10; // !!!
+}
+
 function drawHex() {
 	window.onresize = resizeCanvas();
-	degree += modDegree;
 	if (degree == 360 || degree == -360) degree = 0; // Preventing the variable from reaching huge numbers
 	requestAnimationFrame(drawHex);
 	requestAnimationFrame(drawTri);
@@ -189,6 +200,9 @@ function drawHex() {
 	size = 100 + (intensity * intensityMod);
 	diff = size - oldSize;
 	debugInput.value = intensity.toFixed(0); // For debug purposes
+	if (rotDirection < 0) modDegree = rotDirection + (-1 *(intensity * (intensityMod / 50)));  // !!!
+	else modDegree = rotDirection + (intensity * (intensityMod / 50));                         // !!!
+	degree += modDegree;
 	intensity = 0;
 	// --------------------------------------------------
 	// Hue looping; background color switch -------------
@@ -199,12 +213,12 @@ function drawHex() {
 	color[2] = 'hsl('+floatHue+', 80%, 80%)';
 	color[3] = 'hsl('+floatHue+', 80%, 15%)';
 	color[4] = 'hsl('+floatHue+', 80%, 5%)';
-	if (diff > 20) {
+	if (diff > 24) {
 		tempLightness = lightness[1];
 		lightness[1] = lightness[0];
 		lightness[0] = tempLightness;
 	}
-	if (diff > 30) modDegree = -modDegree; // Change rotating direction
+	if (diff > 32) rotDirection = -rotDirection; // Change rotating direction
 	// --------------------------------------------------
 	modifyColor();
 	drawTri();
