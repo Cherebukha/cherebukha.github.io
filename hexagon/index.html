@@ -13,8 +13,8 @@
 			<input type="checkbox" id="abRepeat" onclick="toggleCheckboxStyle(abRepeat, 0)">
 			<span class="checkmark"></span>
 		</label><br>
-		<input type="text" id="aInput" value="0">
-		<input type="text" id="bInput" value="60"><br>
+		<input type="number" id="aInput" value="0" disabled>
+		<input type="number" id="bInput" value="60" disabled><br>
 		<button id="aSet" onclick="setA()">Set A</button>
 		<button id="bSet" onclick="setB()">Set B</button><br><br>
 		<label for="bass" class="checkboxContainer">Bass
@@ -28,8 +28,8 @@
 		<div id="currentTime">8:88</div>
 		<div id="totalTime">8:88</div>
 	</div>
-	<div id="progressBar">
-		<div id="fill"></div>
+	<div id="progressBar" onmousedown="seekForward()">
+		<div id="fill" onmousedown="seekBackward()"></div>
 		<!--<div id="handle"></div>-->
 	</div>
 	<div id="player" onclick="playAudio()" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
