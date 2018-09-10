@@ -14,10 +14,9 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 100%;
+	width: 100vw;
 	height: auto;
 	background-color: #FFF;
-	margin: 0 auto;
 	padding: 8px 6px;
 	box-sizing: border-box;
 	z-index: 100;
@@ -115,24 +114,15 @@ nav a:hover {
 .header-hr {
 	display: none;
 }
-.about-content, .events-content, .books-content, .articles-content, .projects-content, .contacts-content, .club-content, .club-writers-content, .books-popular-content, .books-wall-content, .book-content {
+.about-content, .events-content, .books-content, .articles-content, .post-content, .projects-content, .contacts-content, .club-content, .club-writers-content, .comments, .books-popular-content, .books-wall-content, .book-content {
 	display: flex;
 	flex-direction: column;
 	padding: 60px 5vw;
-	max-width: 1224px;
-	margin: 0 auto;
-}
-.organization-wrap {
-	display: flex;
-	align-items: flex-start;
-	max-width: 1224px;
-	margin: 0 auto;
-	padding: 0 5vw;
 }
 .organization-content {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 60px;
+	padding: 0 5vw 60px 5vw;
 }
 .sidebar {
 	display: none;
@@ -154,11 +144,6 @@ nav a:hover {
 .events-sidebar-block {
 	display: flex;
 	margin-top: 24px;
-	transition: box-shadow, background-color, 0.3s;
-}
-.events-sidebar-block:hover {
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-	background-color: rgba(0, 0, 0, 0.1);
 }
 .events-sidebar-image {
 	width: 80px;
@@ -206,16 +191,6 @@ nav a:hover {
 .post {
 	width: 100vw;
 }
-.post-wrap {
-	max-width: 1224px;
-	margin: 0 auto;
-	padding: 0 5vw;
-}
-.post-content {
-	display: flex;
-	flex-direction: column;
-	padding-bottom: 60px;
-}
 .post-article p {
 	margin: 24px 0;
 }
@@ -231,11 +206,9 @@ figcaption {
 	margin-top: 60px;
 }
 .post-content .hr {
+	padding: 0;
 	margin-top: 60px;
 	width: 100%;
-}
-.post-content .hr-content {
-	padding: 0;
 }
 .post-comments-block {
 	display: flex;
@@ -361,8 +334,6 @@ p {
 	width: 100vw;
 }
 .position-content {
-	max-width: 1224px;
-	margin: 0 auto;
 	padding: 36px 5vw;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -560,10 +531,6 @@ p {
 .materials-content {
 	display: flex;
 	flex-direction: column;
-}
-.books-content, .articles-content {
-	width: 100%;
-	box-sizing: border-box;
 }
 .books-slider {
 	display: flex;
@@ -813,11 +780,6 @@ p {
 	width: 100vw;
 	box-sizing: border-box;
 }
-.contacts-comments {
-	padding: 60px 5vw;
-	max-width: 1224px;
-	margin: 0 auto;
-}
 
 .club-image {
 	display: flex;
@@ -939,15 +901,12 @@ p {
 }
 
 footer {
-	max-width: 100%;
-}
-.footer-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	max-width: 1224px;
-	margin: 0 auto;
+	width: 100vw;
 	padding: 24px 5vw;
+	box-sizing: border-box;
 }
 footer p {
 	margin: 24px 0;
@@ -1040,14 +999,9 @@ footer p {
 
 /* Разделительная линия */
 .hr {
-	max-width: 100%;
-	width: 100vw;
-}
-.hr-content {
-	max-width: 1224px;
 	display: flex;
 	align-items: center;
-	margin: 0 auto;
+	width: 90vw;
 	padding: 0 5vw;
 }
 .m-diamond {
@@ -1079,9 +1033,12 @@ footer p {
 	header {
 		position: static;
 		flex-direction: column;
-		max-width: 1224px;
 		height: 154px;
 		padding: 24px 6vw 0 6vw;
+	}
+	hr {
+		width: 85vw;
+		margin: 0 7.5vw;
 	}
 	.logo {
 		margin-left: 0;
@@ -1113,7 +1070,7 @@ footer p {
 	nav {
 		display: block !important;
 		position: static;
-		width: 100%;
+		width: auto;
 		height: auto;
 		margin: 0;
 	}
@@ -1122,7 +1079,7 @@ footer p {
 		justify-content: space-around;
 		flex-direction: row;
 		align-items: flex-start;
-		width: 100%;
+		width: 85vw;
 		height: auto;
 		padding-bottom: 0;
 		border-top: 1px solid rgba(128, 96, 32, 0.5);
@@ -1146,7 +1103,7 @@ footer p {
 		margin-left: 2vw;
 	}
 	.events-block-image, .events-block-text {
-		width: 45%;
+		width: 40%;
 	}
 	.m-short a:nth-child(4) {
 		display: flex;
@@ -1184,11 +1141,8 @@ footer p {
 		display: flex;
 		align-items: flex-start;
 	}
-	.organization-wrap {
-		padding: 0 7.5vw;
-	}
 
-	.about-content, .events-content, .materials-content, .projects-content, .contacts-content, .club-content, .club-writers-content, .books-popular-content, .books-wall-content, .book-content {
+	.organization-content, .about-content, .events-content, .materials-content, .post-content, .projects-content, .contacts-content, .comments, .club-content, .club-writers-content, .books-popular-content, .books-wall-content, .book-content, footer {
 		padding: 60px 7.5vw;
 	}
 
@@ -1213,14 +1167,16 @@ footer p {
 		flex-direction: row;
 	}
 	.materials-content {
-		max-width: 1224px;
-		width: calc(85% - 2.5px);
-    	margin: 0 auto;
+		width: 100%;
+		box-sizing: border-box;
 	}
 	.books-content {
 		width: 100%;
 		padding: 24px 0;
 		box-sizing: border-box;
+	}
+	.materials .hr {
+		padding: 0;
 	}
 	.articles-content {
 		width: 100%;
@@ -1233,16 +1189,13 @@ footer p {
 		display: flex;
 		align-items: flex-start;
 	}
-	.post-wrap {
-		padding: 0 7.5vw;
-	}
 	.post-comments-block {
 		flex-direction: column;
-		height: 170px; /* !!! */
+		height: 150px;
 		margin: 26px 0;
 	}
 	.avatar {
-		margin-bottom: 90px; /* !!! */
+		margin-bottom: 70px;
 	}
 	.post-comments-info {
 		flex-direction: row;
@@ -1279,9 +1232,6 @@ footer p {
 	}
 	#map {
 		height: 375px;
-	}
-	.contacts-comments {
-		padding: 60px 7.5vw;
 	}
 
 	.club-writers-block {
@@ -1335,9 +1285,6 @@ footer p {
 	}
 
 	footer {
-		
-	}
-	.footer-content {
 		justify-content: space-between;
 		padding: 24px 7.5vw;
 		flex-wrap: wrap;
@@ -1362,24 +1309,18 @@ footer p {
 	}
 
 	.hr {
-
-	}
-	.hr-content {
+		width: 85vw;
 		padding: 0 7.5vw;
-	}
-	.materials .hr-content {
-		padding: 0;
 	}
 }
 
 @media (min-width: 1150px) {
+	nav ul {
+		width: 73vw;
+	}
+
 	.main-content {
 		/*width: 40%;*/
-		max-width: 1224px;
-		margin: 0 auto;
-	}
-	.main-content p {
-		max-width: 600px;
 	}
 	.about-content {
 		flex-wrap: wrap;
@@ -1411,20 +1352,16 @@ footer p {
 		margin-left: 24px;
 		padding: 24px 16px;
 	}
-	.organization-content {
-		margin-right: 104px;
-	}
-	.post-wrap {
-		display: flex;
-	}
-	.post-content {
-		margin-right: 104px;
+	.squeeze { /* .post на post.html и project.html ведёт себя нестандартно без данного класса */
+		width: calc(100% - 443px); /* Зависит от ширины .sidebar */ 
+		box-sizing: border-box;
 	}
 	.sidebar {
 		display: block;
 	}
 	.events-sidebar, .projects-sidebar {
 		display: block;
+		margin-right: 7.5vw;
 		padding-top: 0;
 	}
 
@@ -1453,9 +1390,6 @@ footer p {
 	}
 
 	footer {
-		
-	}
-	.footer-content {
 		flex-direction: row;
 		justify-content: space-between;
 		padding: 24px 7.5vw;
@@ -1501,6 +1435,12 @@ footer p {
 		margin-top: 0;
 	}
 }
-.main, .about, .events, .materials, .position, .organization, .events, .projects, .post, .books-popular, .books-wall, .book, .comments, .club, .club-writers, .contacts, footer {
+/* Попытка избавиться от горизонтального пролистывания */
+header, .main, .about, .events, .materials, .position, .organization, .events, .projects, .post, .books-popular, .books-wall, .book, .comments, .club, .club-writers, .contacts, footer {
 	max-width: 100%;
+}
+.hr {
+	max-width: 100%;
+	width: 100vw;
+	box-sizing: border-box;
 }
