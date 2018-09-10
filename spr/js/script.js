@@ -15,7 +15,9 @@ $(document).ready(function() {
 	$('.about-slider').slick({
 		arrows: false,
 		autoplay: true,
-		autoplaySpeed: 5000,
+		autoplaySpeed: 3000,
+		pauseOnHover: false,
+		swipe: false,
 		cssEase: 'ease-in',
 		dots: true,
 		fade: true
@@ -29,10 +31,25 @@ $(document).ready(function() {
 	$('.books-slider').slick({
 		arrows: false,
 		dots: true,
-		infinite: true,
 		slidesToShow: 2,
 		slidesToScroll: 2,
-		variableWidth: true
+		variableWidth: true,
+		responsive: [
+			{
+				breakpoint: 750,
+				settings: {
+					centerMode: true,
+					infinite: false
+				}
+			},
+			{
+				breakpoint: 1150,
+				settings: {
+					centerMode: false,
+					slidesToScroll: 1
+				}
+			}
+		]
 	});
 	$('.books-popular-slider').slick({
 		arrows: false,
@@ -58,7 +75,7 @@ $(document).ready(function() {
 		slidesToScroll: 2,
 		responsive: [
 			{
-				breakpoint: 1150,
+				breakpoint: 750,
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1
@@ -66,5 +83,5 @@ $(document).ready(function() {
 			}
 		]
 	});
-	$('.about-slider, .events-slider, .books-slider, .books-popular-slider, .articles-slider').fadeIn(500).removeClass('hidden');
+	$('.about-slider, .events-slider, .books-slider, .books-popular-slider, .articles-slider, #map').fadeIn(500).removeClass('hidden');
 });

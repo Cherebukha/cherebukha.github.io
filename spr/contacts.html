@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="style/style.css">
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/slick/slick.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 	<script src="js/script.js"></script>
 </head>
 <body>
@@ -71,16 +72,18 @@
 				</div>
 			</div>
 			<div class="contacts-map">
-				<a class="dg-widget-link" href="http://2gis.ru/tomsk/firm/422740746462479/center/84.95643854141237,56.48846774215541/zoom/16?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть на карте Томска</a><div class="dg-widget-link"><a href="http://2gis.ru/tomsk/firm/422740746462479/photos/422740746462479/center/84.95643854141237,56.48846774215541/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos">Фотографии компании</a></div><div class="dg-widget-link"><a href="http://2gis.ru/tomsk/center/84.954139,56.488699/zoom/16/routeTab/rsType/bus/to/84.954139,56.488699╎Первый музей славянской мифологии?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route">Найти проезд до Первый музей славянской мифологии</a></div><script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script><script charset="utf-8">new DGWidgetLoader({"width":"100%","height":"100%","borderColor":"#a3a3a3","pos":{"lat":56.48846774215541,"lon":84.95643854141237,"zoom":16},"opt":{"city":"tomsk"},"org":[{"id":"422740746462479"}]});</script><noscript style="color:#c00;font-size:16px;font-weight:bold;">Виджет карты использует JavaScript. Включите его в настройках вашего браузера.</noscript>
+				<div id="map" class="hidden"></div>
 			</div>
 		</div>
 	</div>
 	<div class="hr">
-		<div class="hr-line"></div>
-		<div class="s-diamond"></div>
-		<div class="m-diamond"></div>
-		<div class="s-diamond"></div>
-		<div class="hr-line"></div>
+		<div class="hr-content">
+			<div class="hr-line"></div>
+			<div class="s-diamond"></div>
+			<div class="m-diamond"></div>
+			<div class="s-diamond"></div>
+			<div class="hr-line"></div>
+		</div>
 	</div>
 	<div class="comments">
 		<div class="post-comments contacts-comments">
@@ -95,18 +98,38 @@
 			</div>
 		</div>
 	</div>
-	<hr>
+	<div class="hr">
+		<div class="hr-content">
+			<div class="hr-b-line"></div>
+		</div>
+	</div>
 	<footer>
-		<a href="index.html" class="logo">
-			<div class="logo-image"></div>
-			<div class="logo-text">
-				<span class="logo-text-upper">Знай наших — читай наших!</span>
-				<span class="logo-text-lower">Томский писатель</span>
-			</div>
-		</a>
-		<p>Сайт разработан на средства гранта<br>Президента Российской Федерации</p>
-		<a class="policy" href="#">Политика конфиденциальности</a>
-		<a class="fresco" href="#"></a>
+		<div class="footer-content">
+			<a href="index.html" class="logo">
+				<div class="logo-image"></div>
+				<div class="logo-text">
+					<span class="logo-text-upper">Знай наших — читай наших!</span>
+					<span class="logo-text-lower">Томский писатель</span>
+				</div>
+			</a>
+			<p>Сайт разработан на средства гранта<br>Президента Российской Федерации</p>
+			<a class="policy" href="#">Политика конфиденциальности</a>
+			<a class="fresco" href="#"></a>
+		</div>
 	</footer>
+	<script>
+		google.maps.event.addDomListener(window, 'load', init);
+
+		function init() {
+		    var mapOptions = {
+		        zoom: 16,
+		        center: new google.maps.LatLng(56.488741, 84.953898),
+		        disableDefaultUI: true,
+		        styles: [{"featureType":"all","elementType":"all","stylers":[{"hue":"#ffaa00"},{"saturation":"-33"},{"lightness":"10"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#9c5e18"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"transit.line","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"saturation":"-23"},{"gamma":"2.01"},{"color":"#f2f6f6"}]},{"featureType":"water","elementType":"geometry.stroke","stylers":[{"saturation":"-14"}]}]
+		    };
+		    var mapElement = document.getElementById('map');
+		    var map = new google.maps.Map(mapElement, mapOptions);
+		}
+	</script>
 </body>
 </html>

@@ -1,6 +1,4 @@
 body {
-	min-width: 320px;
-	max-width: 750px;
 	font-family: 'Open Sans';
 }
 a {
@@ -16,9 +14,10 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 100vw;
+	width: 100%;
 	height: auto;
 	background-color: #FFF;
+	margin: 0 auto;
 	padding: 8px 6px;
 	box-sizing: border-box;
 	z-index: 100;
@@ -116,15 +115,24 @@ nav a:hover {
 .header-hr {
 	display: none;
 }
-.about-content, .events-content, .books-content, .articles-content, .post-content, .projects-content, .contacts-content, .club-content, .club-writers-content, .comments, .books-popular-content, .books-wall-content, .book-content {
+.about-content, .events-content, .books-content, .articles-content, .projects-content, .contacts-content, .club-content, .club-writers-content, .books-popular-content, .books-wall-content, .book-content {
 	display: flex;
 	flex-direction: column;
 	padding: 60px 5vw;
+	max-width: 1224px;
+	margin: 0 auto;
+}
+.organization-wrap {
+	display: flex;
+	align-items: flex-start;
+	max-width: 1224px;
+	margin: 0 auto;
+	padding: 0 5vw;
 }
 .organization-content {
 	display: flex;
 	flex-direction: column;
-	padding: 0 5vw 60px 5vw;
+	margin-bottom: 60px;
 }
 .sidebar {
 	display: none;
@@ -141,10 +149,16 @@ nav a:hover {
 	font-size: 18px;
 	font-weight: bold;
 	line-height: 1.6;
+	margin-bottom: 10px;
 }
 .events-sidebar-block {
 	display: flex;
 	margin-top: 24px;
+	transition: box-shadow, background-color, 0.3s;
+}
+.events-sidebar-block:hover {
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	background-color: rgba(0, 0, 0, 0.1);
 }
 .events-sidebar-image {
 	width: 80px;
@@ -169,6 +183,7 @@ nav a:hover {
 	font-weight: bold;
 	line-height: 1.3;
 	color: #000;
+	overflow: hidden;
 	/*text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
@@ -191,6 +206,16 @@ nav a:hover {
 .post {
 	width: 100vw;
 }
+.post-wrap {
+	max-width: 1224px;
+	margin: 0 auto;
+	padding: 0 5vw;
+}
+.post-content {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 60px;
+}
 .post-article p {
 	margin: 24px 0;
 }
@@ -205,13 +230,17 @@ figcaption {
 .post-comments {
 	margin-top: 60px;
 }
-.post-content hr {
-	margin: 0;
+.post-content .hr {
+	margin-top: 60px;
+	width: 100%;
+}
+.post-content .hr-content {
+	padding: 0;
 }
 .post-comments-block {
 	display: flex;
 	flex-wrap: wrap;
-	margin: 26px 0;
+	margin: 26px 0 60px 0;
 	max-width: 800px;
 }
 .avatar {
@@ -319,6 +348,7 @@ h1 {
 	letter-spacing: 0.8px;
 	margin: 14px 0;
 	color: #000;
+	word-wrap: break-word;
 }
 p {
 	font-family: 'Open Sans';
@@ -328,8 +358,11 @@ p {
 
 .position {
 	margin-top: 60px;
+	width: 100vw;
 }
 .position-content {
+	max-width: 1224px;
+	margin: 0 auto;
 	padding: 36px 5vw;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -356,6 +389,8 @@ p {
 .about-slider {
 	margin: 36px 0;
 	max-width: 600px;
+	width: 100%;
+	align-self: center;
 }
 .about-slider img {
 	max-width: 100%;
@@ -522,6 +557,14 @@ p {
 .materials {
 	width: 100vw;
 }
+.materials-content {
+	display: flex;
+	flex-direction: column;
+}
+.books-content, .articles-content {
+	width: 100%;
+	box-sizing: border-box;
+}
 .books-slider {
 	display: flex;
 	justify-content: space-between;
@@ -575,6 +618,7 @@ p {
 	display: block;
 	font-size: 14px;
 	font-style: italic;
+	line-height: 1.4;
 	opacity: 0.75;
 }
 .books-slide-overlay-title {
@@ -611,9 +655,12 @@ p {
 	border-bottom: 2px solid #356d97;
 }
 .books-wall-list {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 136px);
+	grid-column-gap: 16px;
+	/*display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: space-between;*/
 	margin-top: 26px;
 	max-height: 1080px;
 	overflow: hidden;
@@ -629,7 +676,7 @@ p {
 	display: flex;
 	margin: 18px 0;
 	width: 100%;
-	height: 260px;
+	min-height: 260px;
 }
 .articles-slide {
 	margin-right: 24px;
@@ -666,18 +713,21 @@ p {
 	width: 100vw;
 }
 .projects-wall {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 288px);
+	grid-gap: 24px;
+	/*display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-between;*/
 	margin-top: 26px;
 }
 .projects-block {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	margin-bottom: 24px;
 	width: 288px;
 	height: 248px;
+	overflow: hidden;
 }
 /* Плейсхолдер */
 .projects-block:nth-child(3n+1) {
@@ -702,7 +752,7 @@ p {
 	width: 100%;
 	min-height: 88px;
 	background-color: rgba(255, 255, 255, 0.5);
-	-webkit-backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px); /* Работает только в браузере Microsoft Edge */
 }
 .projects-text h2 {
 	text-align: center
@@ -755,22 +805,39 @@ p {
 	margin: 24px -5vw 60px -5vw;
 	height: 200px;
 }
+#map {
+	width: 100%;
+	height: 200px;
+}
 .comments {
 	width: 100vw;
 	box-sizing: border-box;
 }
+.contacts-comments {
+	padding: 60px 5vw;
+	max-width: 1224px;
+	margin: 0 auto;
+}
 
 .club-image {
+	display: flex;
+	justify-content: center;
 	margin-top: 36px;
 	width: 100%;
+	box-sizing: border-box;
 }
 .club-image img {
-	max-width: 100%;
+	width: 100%;
+	height: 100%;
+	max-width: 600px;
 }
 .club-writers-wall {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 136px);
+	grid-column-gap: 16px;
+	/*display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-between;*/
 	margin-top: 36px;
 }
 .club-writers-block {
@@ -872,12 +939,15 @@ p {
 }
 
 footer {
+	max-width: 100%;
+}
+.footer-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 100vw;
+	max-width: 1224px;
+	margin: 0 auto;
 	padding: 24px 5vw;
-	box-sizing: border-box;
 }
 footer p {
 	margin: 24px 0;
@@ -902,13 +972,83 @@ footer p {
 .hidden {
 	display: none;
 }
+.gray-bg {
+	background-color: #f2f2f2;
+}
+
+/* Пользовательские стили слайдеров */
+.about-slider, .events-slider, .books-slider, .books-popular-slider, .articles-slider {
+	outline: none;
+}
+.slick-dots {
+	bottom: -35px;
+}
+.slick-dots li {
+	margin: 0;
+}
+.slick-dots li button {
+
+}
+.slick-dots li button:before {
+	content: '';
+	width: 8px;
+	height: 8px;
+	top: 50%;
+	left: 50%;
+	margin: -4px 0 0 -4px;
+	opacity: 1;
+	border: 1px solid #356d97;
+	border-radius: 50%;
+	box-sizing: border-box;
+	transition: background-color 0.3s;
+}
+.slick-dots li.slick-active button {
+
+}
+.slick-dots li.slick-active button:before {
+	opacity: 1;
+	background-color: #356d97;
+	transition: background-color 0.3s;
+}
+.about-slider .slick-dots {
+	bottom: 15px;
+}
+.about-slider .slick-dots li button:before {
+	border: 1px solid #fff;
+}
+.about-slider .slick-dots li.slick-active button:before {
+	background-color: #fff;
+}
+
+.parking {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 5vw;
+}
+.parking .logo {
+	margin-top: 35px;
+	margin-bottom: 60px;
+}
+.parking .hr {
+	padding: 0;
+}
+.parking h1 {
+	margin-top: 54px;
+	text-align: center;
+}
 
 /* Разделительная линия */
 .hr {
+	max-width: 100%;
+	width: 100vw;
+}
+.hr-content {
+	max-width: 1224px;
 	display: flex;
 	align-items: center;
-	width: 90vw;
-	margin: 0 5vw;
+	margin: 0 auto;
+	padding: 0 5vw;
 }
 .m-diamond {
 	width: 9px;
@@ -929,16 +1069,19 @@ footer p {
 	height: 1px;
 	background-color: #bbb;
 }
+.hr-b-line {
+	width: 100%;
+	height: 1px;
+	background-color: #bbb;
+}
+
 @media (min-width: 750px) {
 	header {
 		position: static;
 		flex-direction: column;
+		max-width: 1224px;
 		height: 154px;
 		padding: 24px 6vw 0 6vw;
-	}
-	hr {
-		width: 85vw;
-		margin: 0 7.5vw;
 	}
 	.logo {
 		margin-left: 0;
@@ -970,7 +1113,7 @@ footer p {
 	nav {
 		display: block !important;
 		position: static;
-		width: auto;
+		width: 100%;
 		height: auto;
 		margin: 0;
 	}
@@ -979,7 +1122,7 @@ footer p {
 		justify-content: space-around;
 		flex-direction: row;
 		align-items: flex-start;
-		width: 73vw;
+		width: 100%;
 		height: auto;
 		padding-bottom: 0;
 		border-top: 1px solid rgba(128, 96, 32, 0.5);
@@ -1003,7 +1146,7 @@ footer p {
 		margin-left: 2vw;
 	}
 	.events-block-image, .events-block-text {
-		width: 40%;
+		width: 45%;
 	}
 	.m-short a:nth-child(4) {
 		display: flex;
@@ -1041,8 +1184,11 @@ footer p {
 		display: flex;
 		align-items: flex-start;
 	}
+	.organization-wrap {
+		padding: 0 7.5vw;
+	}
 
-	.organization-content, .about-content, .events-content, .post-content, .projects-content, .contacts-content, .comments, .club-content, .club-writers-content, .books-popular-content, .books-wall-content, .book-content, footer {
+	.about-content, .events-content, .materials-content, .projects-content, .contacts-content, .club-content, .club-writers-content, .books-popular-content, .books-wall-content, .book-content {
 		padding: 60px 7.5vw;
 	}
 
@@ -1051,52 +1197,52 @@ footer p {
 	}
 	.main-content {
 		padding: 100px 7.5vw;
-		width: 80%;
+		/*width: 80%;*/
+		max-width: 600px;
 	}
 	.main-content h1 {
 		max-width: 343px;
 	}
 
-	.about-content {
-		flex-wrap: wrap;
-		max-height: 550px;
-	}
-	.about-slider {
-		order: 3;
-		width: 50%;
-		margin: 0;
-		margin-left: 24px;
-	}
 	.about-article {
-		width: 50%;
+		width: 100%;
 	}
 
 	.materials {
 		display: flex;
 		flex-direction: row;
 	}
-	.materials .hr {
-		display: none;
+	.materials-content {
+		max-width: 1224px;
+		width: calc(85% - 2.5px);
+    	margin: 0 auto;
 	}
 	.books-content {
-		width: 33%;
-		padding: 60px 12px 60px 7.5vw;
+		width: 100%;
+		padding: 24px 0;
+		box-sizing: border-box;
 	}
 	.articles-content {
-		width: 50%;
-		padding: 60px 7.5vw 60px 12px;
+		width: 100%;
+		/*padding: 60px 7.5vw 60px 12px;*/
+		padding: 24px 0;
+		box-sizing: border-box;
 	}
 
 	.post {
 		display: flex;
 		align-items: flex-start;
 	}
+	.post-wrap {
+		padding: 0 7.5vw;
+	}
 	.post-comments-block {
 		flex-direction: column;
-		height: 150px;
+		height: 170px; /* !!! */
+		margin: 26px 0;
 	}
 	.avatar {
-		margin-bottom: 70px;
+		margin-bottom: 90px; /* !!! */
 	}
 	.post-comments-info {
 		flex-direction: row;
@@ -1131,24 +1277,20 @@ footer p {
 		margin-right: -7.5vw;
 		height: 375px;
 	}
+	#map {
+		height: 375px;
+	}
+	.contacts-comments {
+		padding: 60px 7.5vw;
+	}
 
-	.club-content {
-		max-height: 550px;
-		flex-wrap: wrap;
-	}
-	.club-headline, .club-article {
-		width: 50%;
-		padding-right: 12px;
-		box-sizing: border-box;
-	}
-	.club-image {
-		max-width: 50%;
-		max-height: 50%;
-		padding-left: 12px;
-	}
 	.club-writers-block {
 		width: 184px;
 		height: 344px;
+	}
+	.club-writers-wall {
+		grid-template-columns: repeat(auto-fit, 184px);
+		grid-column-gap: 24px;
 	}
 	.club-writers-image {
 		width: 184px;
@@ -1162,6 +1304,8 @@ footer p {
 		padding-bottom: 0;
 	}
 	.books-wall-list {
+		grid-template-columns: repeat(auto-fit, 184px);
+		grid-column-gap: 24px;
 		max-height: 804px;
 		overflow: hidden;
 	}
@@ -1177,7 +1321,7 @@ footer p {
 	.book-content {
 		flex-wrap: wrap;
 		max-width: 948px;
-		max-height: 467px;
+		max-height: 520px;
 	}
 	.book-headline, .book-description {
 		width: calc(100% - 348px); /* Зависит от ширины и горизонтальных отступов .book-cover */
@@ -1191,8 +1335,11 @@ footer p {
 	}
 
 	footer {
+		
+	}
+	.footer-content {
 		justify-content: space-between;
-		padding: 24px 8vw;
+		padding: 24px 7.5vw;
 		flex-wrap: wrap;
 	}
 	footer p {
@@ -1206,26 +1353,78 @@ footer p {
 		padding-top: 0;
 	}
 
+	.parking {
+		position: absolute;
+		top: 20%;
+		left: calc(50% - 300px);
+		max-width: 600px;
+		padding: 0;
+	}
+
 	.hr {
-		width: 85vw;
-		margin: 0 7.5vw;
+
+	}
+	.hr-content {
+		padding: 0 7.5vw;
+	}
+	.materials .hr-content {
+		padding: 0;
 	}
 }
 
 @media (min-width: 1150px) {
 	.main-content {
-		width: 40%;
+		/*width: 40%;*/
+		max-width: 1224px;
+		margin: 0 auto;
 	}
-	.squeeze { /* .post на post.html и project.html ведёт себя нестандартно без данного класса */
-		width: calc(100% - 443px); /* Зависит от ширины .sidebar */ 
-		box-sizing: border-box;
+	.main-content p {
+		max-width: 600px;
+	}
+	.about-content {
+		flex-wrap: wrap;
+		max-height: 550px;
+	}
+	.about-slider {
+		order: 3;
+		width: 50%;
+		margin: 0;
+		padding-left: 24px;
+	}
+	.about-article {
+		width: 50%;
+	}
+	.materials-content {
+		flex-direction: row;
+	}
+	.books-content {
+		width: 392px;
+		/*width: 33%;
+		padding: 60px 12px 60px 7.5vw;*/
+		padding: 24px 16px;
+	}
+	.materials .hr {
+		display: none;
+	}
+	.articles-content {
+		width: calc(100% - 392px - 24px);
+		margin-left: 24px;
+		padding: 24px 16px;
+	}
+	.organization-content {
+		margin-right: 104px;
+	}
+	.post-wrap {
+		display: flex;
+	}
+	.post-content {
+		margin-right: 104px;
 	}
 	.sidebar {
 		display: block;
 	}
 	.events-sidebar, .projects-sidebar {
 		display: block;
-		margin-right: 7.5vw;
 		padding-top: 0;
 	}
 
@@ -1249,10 +1448,17 @@ footer p {
 		display: flex;
 	}
 
+	#map {
+		max-width: 600px;
+	}
+
 	footer {
+		
+	}
+	.footer-content {
 		flex-direction: row;
 		justify-content: space-between;
-		padding: 24px 8vw;
+		padding: 24px 7.5vw;
 	}
 	footer p {
 		margin: 0;
@@ -1272,10 +1478,29 @@ footer p {
 		flex-direction: row;
 	}
 
+	.club-headline, .club-article {
+		width: 50%;
+		padding-right: 12px;
+		box-sizing: border-box;
+	}
+	.club-image {
+		max-width: 50%;
+		max-height: 50%;
+		padding-left: 12px;
+		margin-top: 0;
+	}
+	.club-content {
+		max-height: 550px;
+		flex-wrap: wrap;
+	}
+
 	.first-block {
 		padding-top: 0;
 	}
 	.contacts-comments {
 		margin-top: 0;
 	}
+}
+.main, .about, .events, .materials, .position, .organization, .events, .projects, .post, .books-popular, .books-wall, .book, .comments, .club, .club-writers, .contacts, footer {
+	max-width: 100%;
 }
