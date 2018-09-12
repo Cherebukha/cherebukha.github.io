@@ -4,14 +4,15 @@ $(document).ready(function() {
 		if ($('nav').css('display') === 'none') {
 			$('.nav-button').addClass('close');
 			$('nav').fadeIn(300);
-			$('nav').css('display', 'block');
+			//$('nav').css('display', 'block');
 		}
 		else {
 			$('.nav-button').removeClass('close');
-			$('nav').css('display', 'none');
+			$('nav').fadeOut(300);
+			//$('nav').css('display', 'none');
 		}
 	});
-
+	
 	$('.about-slider').slick({
 		arrows: false,
 		autoplay: true,
