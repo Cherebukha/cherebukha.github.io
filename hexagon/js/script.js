@@ -99,8 +99,8 @@ function drawTri() {
 }
 
 function modifyColor() {
-	debugInput.style.border = '2px solid '+color[2];
-	debugInput.style.backgroundColor = color[3];
+	/*debugInput.style.border = '2px solid '+color[2];
+	debugInput.style.backgroundColor = color[3];*/
 	debugInput.style.color = color[2];
 	player.style.borderColor = color[2];
 	player.style.backgroundColor = color[4];
