@@ -720,6 +720,8 @@ p {
 	flex-wrap: wrap;
 	justify-content: space-between;*/
 	margin-top: 26px;
+	justify-content: center;
+	transition: 0.3s;
 }
 .projects-block {
 	display: flex;
@@ -728,6 +730,7 @@ p {
 	width: 288px;
 	height: 248px;
 	overflow: hidden;
+	transition: 0.3s;
 }
 /* Плейсхолдер */
 .projects-block:nth-child(3n+1) {
@@ -802,7 +805,7 @@ p {
 	margin-right: 12px;
 }
 .contacts-map {
-	margin: 24px -5vw 60px -5vw;
+	margin: 12px -5vw 0 -5vw;
 	height: 200px;
 }
 #map {
@@ -835,10 +838,8 @@ p {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 136px);
 	grid-column-gap: 16px;
-	/*display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;*/
 	margin-top: 36px;
+	justify-content: center;
 }
 .club-writers-block {
 	width: 136px;
@@ -1308,6 +1309,7 @@ footer p {
 		grid-column-gap: 24px;
 		max-height: 804px;
 		overflow: hidden;
+		justify-content: center
 	}
 	.books-wall-list .books-block {
 		width: 184px;
