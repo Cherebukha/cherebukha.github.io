@@ -115,7 +115,7 @@ nav a:hover {
 .header-hr {
 	display: none;
 }
-.events-content, .books-content, .articles-content, .projects-content, .contacts-content, .club-writers-content, .books-popular-content, .books-wall-content {
+.events-content, .books-content, .articles-content, .projects-content, .contacts-content, .club-writers-content, .books-popular-content {
 	display: flex;
 	flex-direction: column;
 	padding: 60px 5vw;
@@ -661,28 +661,67 @@ p {
 .books-wall {
 	width: 100vw;
 }
-.books-wall-tabs a {
+.books-wall-content {
+	padding: 60px 5vw;
+	max-width: 1224px;
+	margin: 0 auto;
+}
+/* Вкладки */
+.books-wall-tabs {
+	display: flex;
+}
+.books-wall-content input {
+	display: none;
+}
+.books-wall-content label {
+	display: inline-block;
 	font-weight: bold;
 	color: #000;
 	text-transform: uppercase;
 	letter-spacing: 0.9px;
 	padding: 8px 0;
-	margin-right: 24px;
+	margin-right: 28px;
 	border-bottom: 2px solid #fff;
+	cursor: pointer;
+	transition: 0.3s;
+	user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
 }
-.books-wall-tabs a:hover {
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+.books-wall-content label:last-child {
+	margin-right: 0;
+}
+.books-wall-content input:checked + label {
 	border-bottom: 2px solid #356d97;
 }
-.books-wall-list {
+#tab-1:checked ~ #tab-content-1, #tab-2:checked ~ #tab-content-2, #tab-3:checked ~ #tab-content-3 {
 	display: grid;
+}
+.books-wall-list {
+	display: none;
 	grid-template-columns: repeat(auto-fit, 136px);
 	grid-column-gap: 16px;
-	/*display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;*/
 	margin-top: 26px;
 	max-height: 1080px;
 	overflow: hidden;
+	animation: fadeIn 1s ease;
 }
 .books-wall-list .books-block {
 	width: 136px;
