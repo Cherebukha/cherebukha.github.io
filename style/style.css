@@ -41,6 +41,8 @@ li {
 a {
 	color: #6a8ed8;
 }
+#styrofoam {
+	display: none;
 
 @keyframes appear {
 	0% {
