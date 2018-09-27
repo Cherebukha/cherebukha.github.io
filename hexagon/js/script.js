@@ -1,4 +1,4 @@
-var canvas, context, centerX, centerY, intensity = 0, intensityMod = 0.0005, diff, size, oldSize, degree = 0, modDegree = 1, rotDirection = 1;
+var canvas, context, centerX, centerY, intensity = 0, intensityMod = 0.0005, diff, size, oldSize, degree = 0, modDegree = 1, rotDirection = 1, cooldown = [0, 0];
 var file, audio, files = 0, audioCtx, src, analyser, bufferLength, bar, dataArray;
 var priHue = 215, secHue = 315, floatHue = priHue + 10, modHue = 1, color = new Array, lightness = [15, 5], tempLightness;
 var a, b;
@@ -20,6 +20,7 @@ function initPage() {
 	fillBar = document.getElementById('fill');
 	bass = document.getElementById('bass');
 	time = document.getElementById('time');
+	hideIcon = document.getElementById('hideIcon');
 
 	context = canvas.getContext("2d");
 	// canvas.addEventListener('contextmenu', event => event.preventDefault()); // Prevent context menu from appearing at clicking the RMB on canvas
@@ -33,7 +34,7 @@ function initPage() {
 	analyser.fftSize = 2048;
 	analyser.smoothingTimeConstant = 0.3; // God blessed property
 	bufferLength = analyser.frequencyBinCount;
-	bar = bufferLength;
+	bar = bufferLength / 1.8;
 	dataArray = new Uint8Array(bufferLength);
 	drawHex();
 	audio.addEventListener('ended', function() {
@@ -122,6 +123,7 @@ function modifyColor() {
 	/*handle.style.backgroundColor = color[2];*/
 	fillBar.style.backgroundColor = color[2];
 	time.style.color = color[2];
+	hideIcon.style.fill = color[2];
 }
 
 function toggleCheckboxStyle(checkbox, n) {
@@ -162,7 +164,7 @@ function toggleBass() {
 		analyser.maxDecibels = -20;
 		analyser.smoothingTimeConstant = 0.6;
 	} else {
-		bar = bufferLength;
+		bar = bufferLength / 1.8;
 		intensityMod = 0.0005;
 		analyser.minDecibels = -100;
 		analyser.maxDecibels = -30;
@@ -183,6 +185,13 @@ function seekForward() {
 
 function seekBackward() {
 	audio.currentTime -= 10; // !!!
+}
+
+function hideUI() {
+	settings.style.display = (settings.style.display == 'none') ? 'block' : 'none';
+	player.style.display = (player.style.display == 'none') ? 'block' : 'none';
+	progressBar.style.display = (progressBar.style.display == 'none') ? 'block' : 'none';
+	time.style.display = (time.style.display == 'none') ? 'block' : 'none';
 }
 
 function drawHex() {
@@ -213,12 +222,18 @@ function drawHex() {
 	color[2] = 'hsl('+floatHue+', 80%, 80%)';
 	color[3] = 'hsl('+floatHue+', 80%, 15%)';
 	color[4] = 'hsl('+floatHue+', 80%, 5%)';
-	if (diff > 24) {
+	if (diff > 24 & cooldown[0] == 0) {
 		tempLightness = lightness[1];
 		lightness[1] = lightness[0];
 		lightness[0] = tempLightness;
+		cooldown[0] = 35;
 	}
-	if (diff > 32) rotDirection = -rotDirection; // Change rotating direction
+	if (diff > 32 & cooldown[1] == 0) {
+		rotDirection = -rotDirection;  // Change rotating direction
+		cooldown[1] = 200;
+	}
+	if (cooldown[0] > 0) cooldown[0]--;
+	if (cooldown[1] > 0) cooldown[1]--;
 	// --------------------------------------------------
 	modifyColor();
 	drawTri();
