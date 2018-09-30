@@ -1,4 +1,4 @@
-var canvas, context, centerX, centerY, intensity = 0, intensityMod = 0.0005, diff, size, oldSize, degree = 0, modDegree = 1, rotDirection = 1, cooldown = [0, 0];
+var canvas, context, centerX, centerY, intensity = 0, intensityMod = 0.0005, diff, size, oldSize, degree = 0, modDegree = 1, triMod = 0, rotDirection = 1, cooldown = [0, 0];
 var file, audio, files = 0, audioCtx, src, analyser, bufferLength, bar, dataArray;
 var priHue = 215, secHue = 315, floatHue = priHue + 10, modHue = 1, color = new Array, lightness = [15, 5], tempLightness;
 var a, b;
@@ -8,6 +8,9 @@ function initPage() {
 	audio = document.getElementById('audio');
 	canvas = document.getElementById('myCanvas');
 	debugInput = document.getElementById('debugInput');
+	intensityInput = document.getElementById('intensityInput');
+	colorCooldown = document.getElementById('colorCooldown');
+	directionCooldown = document.getElementById('directionCooldown');
 	player = document.getElementById('player');
 	playerMessage = document.getElementById('playerMessage');
 	settings = document.getElementById('settings');
@@ -51,6 +54,13 @@ function initPage() {
 	});
 }
 
+/* Rotate triangle with mouse wheel (pointless yet possible) */
+$(document).bind('mousewheel', function(e) {
+	if (triMod == 360 || triMod == -360) triMod = 0;
+	if(e.originalEvent.wheelDelta < 0) {triMod -= 5} else {triMod += 5};
+	return false;
+})
+
 function dropHandler(ev) {
 	ev.preventDefault();
 	abRepeat.checked = false;
@@ -92,17 +102,19 @@ function degreesToRadians(degrees) {
 
 function drawTri() {
 	context.beginPath();
-	context.lineTo(centerX + (size * 2) * Math.cos(3* Math.PI / 6 + degreesToRadians(degree)), centerY + (size * 2) * Math.sin(3 * Math.PI / 6 + degreesToRadians(degree)));
-	context.lineTo(centerX + (size * 1.8) * Math.cos(2.8 * Math.PI / 6 + degreesToRadians(degree)), centerY + (size * 1.8) * Math.sin(2.8 * Math.PI / 6 + degreesToRadians(degree)));
-	context.lineTo(centerX + (size * 1.8) * Math.cos(3.2 * Math.PI / 6 + degreesToRadians(degree)), centerY + (size * 1.8) * Math.sin(3.2 * Math.PI / 6 + degreesToRadians(degree)));
+	context.lineTo(centerX + (size * 2) * Math.cos(3* Math.PI / 6 + degreesToRadians(degree + triMod)), centerY + (size * 2) * Math.sin(3 * Math.PI / 6 + degreesToRadians(degree + triMod)));
+	context.lineTo(centerX + (size * 1.8) * Math.cos(2.8 * Math.PI / 6 + degreesToRadians(degree + triMod)), centerY + (size * 1.8) * Math.sin(2.8 * Math.PI / 6 + degreesToRadians(degree + triMod)));
+	context.lineTo(centerX + (size * 1.8) * Math.cos(3.2 * Math.PI / 6 + degreesToRadians(degree + triMod)), centerY + (size * 1.8) * Math.sin(3.2 * Math.PI / 6 + degreesToRadians(degree + triMod)));
 	context.fillStyle = color[2];
 	context.fill();
 }
 
 function modifyColor() {
-	/*debugInput.style.border = '2px solid '+color[2];
-	debugInput.style.backgroundColor = color[3];*/
-	debugInput.style.color = color[2];
+	/*intensityInput.style.border = '2px solid '+color[2];
+	intensityInput.style.backgroundColor = color[3];*/
+	intensityInput.style.color = color[2];
+	colorCooldown.style.color = color[2];
+	directionCooldown.style.color = color[2];
 	player.style.borderColor = color[2];
 	player.style.backgroundColor = color[4];
 	player.style.color = color[2];
@@ -188,10 +200,11 @@ function seekBackward() {
 }
 
 function hideUI() {
-	settings.style.display = (settings.style.display == 'none') ? 'block' : 'none';
-	player.style.display = (player.style.display == 'none') ? 'block' : 'none';
-	progressBar.style.display = (progressBar.style.display == 'none') ? 'block' : 'none';
-	time.style.display = (time.style.display == 'none') ? 'block' : 'none';
+	$('#settings').toggle();
+	$('#player').toggle();
+	$('#progressBar').toggle();
+	$('#time').toggle();
+	$('#debugInput').toggle();
 }
 
 function drawHex() {
@@ -208,7 +221,7 @@ function drawHex() {
 	oldSize = size;
 	size = 100 + (intensity * intensityMod);
 	diff = size - oldSize;
-	debugInput.value = intensity.toFixed(0); // For debug purposes
+	intensityInput.value = intensity.toFixed(0); // For debug purposes
 	if (rotDirection < 0) modDegree = rotDirection + (-1 *(intensity * (intensityMod / 50)));  // !!!
 	else modDegree = rotDirection + (intensity * (intensityMod / 50));                         // !!!
 	degree += modDegree;
@@ -234,6 +247,8 @@ function drawHex() {
 	}
 	if (cooldown[0] > 0) cooldown[0]--;
 	if (cooldown[1] > 0) cooldown[1]--;
+	colorCooldown.value = cooldown[0];
+	directionCooldown.value = cooldown[1];
 	// --------------------------------------------------
 	modifyColor();
 	drawTri();

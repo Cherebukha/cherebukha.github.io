@@ -45,9 +45,6 @@ body {
 	height: 180px;
 	opacity: 0.6;
 }
-#settings:hover {
-	opacity: 1;
-}
 .checkboxContainer {
 	display: block;
 	position: relative;
@@ -88,10 +85,6 @@ body {
 	color: white;
 	font-family: bumpitup;
 }
-#setInput:hover {
-	border-color: white;
-	background-color: black;
-}
 #aSet, #bSet {
 	width: 132px;
 	height: 20px;
@@ -119,10 +112,15 @@ body {
 	fill: #fff;
 }
 #debugInput {
-	display: none;
 	position: fixed;
 	top: 10px;
 	right: 10px;
+	z-index: 100;
+	display: flex;
+	flex-direction: column;
+	opacity: 0.6;
+}
+#intensityInput, #colorCooldown, #directionCooldown {
 	z-index: 100;
 	width: 230px;
 	height: 40px;
@@ -157,9 +155,6 @@ body {
 	cursor: pointer;
 	opacity: 0.6;
 }
-#progressBar:hover {
-	opacity: 1;
-}
 #fill {
 	height: 10px;
 }
@@ -186,9 +181,6 @@ body {
 	border-width: 5px 7px 8px;
 	border-style: solid;
 }
-#player:hover {
-	opacity: 1;
-}
 #playerMessage {
 	display: block;
 	text-align: center;
@@ -205,6 +197,9 @@ body {
 	text-transform: uppercase;
 	font-size: 24px;
 	cursor: default;
+}
+#settings:hover, #progressBar:hover, #player:hover, #debugInput:hover {
+	opacity: 1;
 }
 .flashing {
 	animation: flash 2s ease infinite;
