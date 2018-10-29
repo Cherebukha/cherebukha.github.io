@@ -1,5 +1,6 @@
 body {
 	font-family: 'Open Sans';
+	background-color: #FFF;
 }
 a {
 	text-decoration: none;
@@ -825,6 +826,7 @@ p {
 }
 .projects-block:hover {
 	transform: scale(1.05);
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
 }
 /* Плейсхолдер */
 .projects-1 {background: url('../img/projects/projects-1.jpg') no-repeat center center;background-size: cover;}
