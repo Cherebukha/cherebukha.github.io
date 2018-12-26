@@ -67,14 +67,6 @@ header {
 	height: 44px;
 	background: url('../img/icons/menu.svg') no-repeat center center;
 	background-size: cover;
-	transition: 0.3s;
-}
-.nav-button:hover {
-	border-radius: 10px;
-	background-color: #bbb;
-}
-.nav-button:active {
-	transform: scale(0.9);
 }
 .close {
 	background: url('../img/icons/close.svg') no-repeat center center;
