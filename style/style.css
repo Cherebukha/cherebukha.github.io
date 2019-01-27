@@ -192,11 +192,6 @@ body {
 .project-2 { background-image: url('img/project-2.jpg'); }
 .project-3 { background-image: url('img/project-3.jpg'); }
 .project-4 { background-image: url('img/project-4.jpg'); }
-.project-5 { background-image: url('http://placekitten.com/410/300'); }
-.project-6 { background-image: url('http://placekitten.com/400/300'); }
-.project-7 { background-image: url('http://placekitten.com/390/300'); }
-.project-8 { background-image: url('http://placekitten.com/380/300'); }
-.project-9 { background-image: url('http://placekitten.com/370/300'); }
 .project-info {
 	padding: 10px 13px;
 }
@@ -227,6 +222,9 @@ body {
 }
 .about-image, .about-info {
 	width: 48%;
+}
+.about-image img {
+	width: 100%;
 }
 h2 {
 	font-size: 45px;
@@ -329,9 +327,6 @@ footer a {
 	}
 	.about-image, .about-info {
 		width: auto;
-	}
-	.about-image img {
-		width: 100%;
 	}
 	.about-info {
 		order: -1;
