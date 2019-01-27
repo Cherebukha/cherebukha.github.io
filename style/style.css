@@ -88,7 +88,8 @@ body {
 	width: 100%;
 	margin: 30px auto;
 	background-image: url('http://drive.google.com/uc?export=view&id=1y0RJILrf5ghYOuXHVbOhyOAfE6KL-bCA');
-	background-size: 100%;
+	background-size: cover;
+	background-position: right;
 }
 .info-subtitle {
 	display: block;
@@ -157,23 +158,30 @@ body {
 .info-image {
 	max-width: 50%;
 }
+.info-image img {
+	width: 100%;
+}
 
-.project-container {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, 370px);
-	grid-column-gap: 31px;
-	grid-row-gap: 41px;
-	justify-content: center;
+.project {
 	width: 100%;
 	max-width: 1180px;
 	margin: 92px auto 0 auto;
+	margin-top: 92px;
+}
+.project-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 .project-card {
+	min-width: 370px;
+	width: 370px;
+	height: 370px;
+	margin-bottom: 40px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
 }
 .project-image {
-	width: 370px;
 	height: 300px;
 	background-color: #717072;
 	background-size: cover;
@@ -208,12 +216,11 @@ body {
 }
 
 .about {
-	margin: 177px 0 105px 0;
-}
-.about-content {
 	max-width: 1180px;
 	width: 100%;
-	margin: 0 auto;
+	margin: 177px auto 105px auto;
+}
+.about-content {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -283,9 +290,59 @@ footer a {
 	border-radius: 19px;
 }
 
-@media (max-width: 1200px) {
-	body {
-		background-color: #eee;
+@media (max-width: 1350px) {
+	.menu, .info, .project, .about, .footer-content {
+		width: 90%;
+	}
+	.project-card {
+		width: 48%;
+	}
+}
+@media (max-width: 992px) {
+	.menu-list a {
+		margin-right: 20px;
+	}
+	.info {
+		flex-direction: column;
+	}
+	.info-image {
+		order: -1;
+		max-width: auto;
+	}
+	.project-card {
+		min-width: auto;
+	}
+	.footer-info {
+		flex-direction: column;
+		align-items: center;
+	}
+	.footer-text {
+		margin-bottom: 20px;
 	}
 
+	.about {
+		margin-top: 50px;
+	}
+	.about-content {
+		flex-direction: column;
+		align-items: center;
+	}
+	.about-image, .about-info {
+		width: auto;
+	}
+	.about-image img {
+		width: 100%;
+	}
+	.about-info {
+		order: -1;
+	}
+}
+@media (max-width: 768px) {
+	.menu-list {
+		display: none;
+	}
+	.project-card {
+		width: 95%;
+		margin: 30px auto;
+	}
 }
