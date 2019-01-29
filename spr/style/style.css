@@ -820,7 +820,6 @@ p {
 	transform: scale(1.05);
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
 }
-/* Плейсхолдер */
 .projects-1 {background: url('../img/projects/projects-1.jpg') no-repeat center center;background-size: cover;}
 .projects-2 {background: url('../img/projects/projects-2.jpg') no-repeat center center;background-size: cover;}
 .projects-3 {background: url('../img/projects/projects-3.jpg') no-repeat center center;background-size: cover;}
@@ -831,7 +830,6 @@ p {
 .projects-8 {background: url('../img/projects/projects-8.jpg') no-repeat center center;background-size: cover;}
 .projects-9 {background: url('../img/projects/projects-9.jpg') no-repeat center center;background-size: cover;}
 .projects-10 {background: url('../img/projects/projects-10.jpg') no-repeat center center;background-size: cover;}
-/*             */
 .projects-text {
 	display: flex;
 	align-items: center;
