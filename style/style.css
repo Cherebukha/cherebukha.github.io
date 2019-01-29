@@ -126,6 +126,7 @@ body {
 .facebook { background-color: #3a5898; font-size: 22px; }
 .instagram { background-color: #13578a; font-size: 26px; }
 .vk { background-color: #56acef; font-size: 25px; }
+.github { background-color: #7e147c; font-size: 27px; }
 .info-buttons {
 	margin-top: 42px;
 }
@@ -174,12 +175,18 @@ body {
 	justify-content: space-between;
 }
 .project-card {
+	display: block;
 	min-width: 370px;
 	width: 370px;
 	height: 370px;
 	margin-bottom: 40px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
+	text-decoration: none;
+	transition: box-shadow 0.3s ease;
+}
+.project-card:hover {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);;
 }
 .project-image {
 	height: 300px;
@@ -205,9 +212,8 @@ body {
 	text-transform: uppercase;
 	margin-top: 5px;
 }
-.project-name {
-	text-decoration: none;
-	color: inherit;
+.project-name, .project-year {
+	color: #000;
 }
 
 .about {
